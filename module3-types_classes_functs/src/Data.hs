@@ -70,7 +70,7 @@ zipIt :: [Int] -> [Char] -> [(Int, Char)]
 zipIt l1 l2 = zip l1 l2 
 -- Unzip is also present for data lists
 
--- List compression
+-- List comprehension
 comp :: Int -> Int -> [Int]
 comp lower upper = [lower | lower <- [lower..upper]]
 
