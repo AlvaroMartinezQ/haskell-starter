@@ -41,7 +41,7 @@ con l1 l2 = l1 ++ l2
 rev :: [Int] -> [Int]
 rev l1 = reverse l1
 
--- List legnth
+-- List length
 len  :: [Int] -> Int
 len l1 = length l1
 
