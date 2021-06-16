@@ -59,3 +59,17 @@ myLength'' list = case list of
 myCountChar :: String -> Char -> Int
 myCountChar [] _ = 0
 myCountChar str c = if (head str) == c then 1 + myCountChar (tail str) c else myCountChar (tail str) c
+
+-- Given a list return the addition of all of its numbers
+-- With not final reursion
+addAll :: [Int] -> Int
+addAll [] = 0
+addAll (x:xs) = x + addAll xs
+
+-- With final recursion:
+addAll' :: [Int] -> Int
+addAll' l = addAllAux l 0
+
+addAllAux :: [Int] -> Int -> Int
+addAllAux [] c = c
+addAllAux (x:xs) c = addAllAux xs (c+x)
