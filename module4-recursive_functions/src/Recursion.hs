@@ -37,3 +37,25 @@ foldrIt l1 s = foldr (\e acc -> if s == e then acc+1 else acc) 0 l1
 lon :: [a] -> Int
 lon [] = 0
 lon (x:xs) = 1 + lon xs
+
+-- Exercises proposed during lectures
+-- Given a list return its length, do not use the predefined function length
+-- 1 -> with one equation
+myLength :: [Int] -> Int
+myLength list = if list == [] then 0 else 1 + myLength (tail list)
+
+-- 2 -> pattern setting
+myLength' :: [Int] -> Int
+myLength' [] = 0
+myLength' (_:xs) = 1 + myLength' xs
+
+-- 3 -> CASE
+myLength'' :: [Int] -> Int
+myLength'' list = case list of
+			[] -> 0
+			(_:xs) -> 1 + myLength'' xs
+			
+-- Given a String and a Char return an Integer counting all times that Char is in the String
+myCountChar :: String -> Char -> Int
+myCountChar [] _ = 0
+myCountChar str c = if (head str) == c then 1 + myCountChar (tail str) c else myCountChar (tail str) c
