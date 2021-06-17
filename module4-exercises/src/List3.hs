@@ -9,4 +9,3 @@ mix (x:xs) (y:z:ys) = [(x, y, z)] ++ mix xs ys
 -- Given a list insert a received element in the last position
 lastPosIn :: [a] -> a -> [a]
 lastPosIn l el = l ++ [el]
-
