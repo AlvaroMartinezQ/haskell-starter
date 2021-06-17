@@ -83,7 +83,7 @@ type RacionalType = (Numb, Deno)
 data RacionalData = RacDat Integer Integer deriving Show
 
 -- Given a list return a list with those Racional data types which are equal
--- Racional equal -> (a, b) (c, d), True if a/b == c/d
+-- Racional equal -> (a, b) (c, d), True if a*d == b*c
 racionalList :: [RacionalData] -> RacionalData -> [RacionalData]
 racionalList [] _ = []
 racionalList ((RacDat n1 n2):xs) (RacDat c1 c2)
