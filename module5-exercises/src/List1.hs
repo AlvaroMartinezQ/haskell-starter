@@ -84,6 +84,7 @@ data RacionalData = RacDat Integer Integer deriving Show
 
 -- Given a list return a list with those Racional data types which are equal
 -- Racional equal -> (a, b) (c, d), True if a*d == b*c
+-- Try it out -> shell> racionalList [(RacDat 2 4),(RacDat 3 5), (RacDat 4 8)] (RacDat 1 2) 
 racionalList :: [RacionalData] -> RacionalData -> [RacionalData]
 racionalList [] _ = []
 racionalList ((RacDat n1 n2):xs) (RacDat c1 c2)
