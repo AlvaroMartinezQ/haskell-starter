@@ -73,3 +73,53 @@ instance Collection Queue where
 	first (Que a) = last a
 	delete (Que a) = Que (init a)
 	size (Que a) = length a
+	
+-- Tennis competitions
+
+data Tournament = T {
+					tourName :: String
+					} deriving Show
+					
+data Finalists = F {
+					finalist1 :: TennisPlayer,
+					finalist2 :: TennisPlayer
+					} deriving Show
+					
+data TennisPlayer = TP {
+						playerName :: String
+						} deriving Show
+						
+data MatchResult = MR {
+						resultPlayer1 :: [Int],
+						resultPlayer2 :: [Int]
+						} deriving Show
+						
+data TennisCompetition = TC {
+							tournament :: Tournament,
+							finalists :: Finalists,
+							finalResults :: MatchResult
+							} deriving Show
+							
+openAustralia :: TennisCompetition
+openAustralia = TC (T "Open Australia") (F (TP "Novak Djokovic") (TP "Andy Murray")) (MR [6, 7, 6, 6] [7, 6, 3, 2])
+	
+getNameComp :: TennisCompetition -> String
+getNameComp (TC (T n) _ _) = n
+
+getFinalists :: TennisCompetition -> String
+getFinalists (TC _ (F (TP n1) (TP n2)) _) = n1 ++ ", " ++ n2
+
+getSets :: TennisCompetition -> String
+getSets (TC _ _ (MR r1 r2)) = show r1 ++ "-" ++ show r2
+
+printCompetition :: TennisCompetition -> String
+printCompetition comp = "Tennis competition: " ++ show (getNameComp comp) ++ " finalists: " ++ show (getFinalists comp) ++ " on sets (player 1 - player 2): " ++ show (getSets comp)
+
+instance Eq TennisCompetition where
+	(TC (T nameT1) _ _) == (TC (T nameT2) _ _) = nameT1 == nameT2
+
+instance Ord TennisCompetition where
+	(TC (T nameT1) _ _) <= (TC (T nameT2) _ _) = nameT1 <= nameT2
+	(TC (T nameT1) _ _) < (TC (T nameT2) _ _) = nameT1 < nameT2
+	(TC (T nameT1) _ _) >= (TC (T nameT2) _ _) = nameT1 >= nameT2
+	(TC (T nameT1) _ _) > (TC (T nameT2) _ _) = nameT1 > nameT2
