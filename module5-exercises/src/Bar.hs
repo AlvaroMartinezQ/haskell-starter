@@ -21,7 +21,7 @@ insertTable :: Ocupation -> Table -> Ocupation
 insertTable (O fr nf) tab = O (fr ++ [tab]) nf 
 
 giveTable :: Ocupation -> Int -> Maybe Table
-giveTable (O fr nf) n_pers = giveTableAux fr (T 0 100) n_pers -- Set the initial persons as 100 as no table will have that seats
+giveTable (O fr nf) n_pers = giveTableAux fr (T 0 100) n_pers -- Set the initial persons as 100 as no table will have that seatss
 
 giveTableAux :: [Table] -> Table -> Int -> Maybe Table -- [Free tables] [Last best table found] [nº of persons]
 giveTableAux [] (T i c) _ = if i == 0 then Nothing else Just (T i c)
